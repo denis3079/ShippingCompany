@@ -67,7 +67,7 @@ go
 
 CREATE TABLE E_5_Client
 (
-	Customers_internal_account int  NOT NULL , -- ПЕРСОНАЛЬНЫЙ НОМЕР КЛИЕНТА
+	Customers_internal_account varchar(50)  NOT NULL , -- ПЕРСОНАЛЬНЫЙ НОМЕР КЛИЕНТА
 	LastName varchar(100) NOT NULL , -- ФАМИЛИЯ
 	FirstName varchar(100) NOT NULL , -- ИМЯ
 	PatronimicName varchar(100) NULL , -- ОТЧЕСТВО
@@ -80,7 +80,7 @@ go
 
 CREATE TABLE E_6_Ticket
 (
-	Number_of_ticket varchar(15) NOT NULL , -- НОМЕР БИЛЕТА
+	Number_of_ticket varchar(50) NOT NULL , -- НОМЕР БИЛЕТА
     Voyage_number VARCHAR(15) REFERENCES E_4_Voyage (Voyage_number) ON DELETE CASCADE, -- ВНЕШНИЙ КЛЮЧ - НОМЕР РЕЙСА 
 	Customers_internal_account int REFERENCES E_5_Client (Customers_internal_account) ON DELETE CASCADE, -- ВНЕШНИЙ КЛЮЧ - ПЕРСОНАЛЬНЫЙ НОМЕР КЛИЕНТА
 	NameShip VARCHAR(35) REFERENCES E_2_Ship (NameShip) ON UPDATE NO ACTION, -- ВНЕШНИЙ КЛЮЧ - НАИМЕНОВАНИЕ КАРАБЛЯ
