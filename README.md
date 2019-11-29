@@ -1,2 +1,2 @@
 # ShippingCompany_MSSQL
-Creating database MS SQL a "Ship Company" 
+Creating database Microsoft SQL a "Ship Company" 
