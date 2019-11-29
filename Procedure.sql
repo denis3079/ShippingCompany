@@ -3,22 +3,22 @@ CREATE PROCEDURE ProcTicketHA1548
 
 AS
 BEGIN 
--- ¬водим переменные (общее количество кают, проданные билеты на рейс, не проданные билеты на рейс) 
+-- Enter variables (total number cabins, tickets sold, tickets not purchased) 
  
  DECLARE 
  @TotalNumberCabins INT,
  @TicketsSold INT,
  @TicketsNotPurchased INT
 
-    -- ќпредел€ем общее количество кают на корабле
+    -- Determine the total number of cabins on the ship
     SELECT @TotalNumberCabins = SUM (TotalNumberCabins) FROM E_12_Cabin_ship
     WHERE NameShip = 'Denver'
-	-- ќпредел€ем количество проданных билетов на рейс
+	-- Determine the number of tickets sold for the voyage
 	SELECT @TicketsSold = COUNT(*) FROM E_6_Ticket
     WHERE NameShip = 'Denver' AND Voyage_number = 'HA 1548'
-	-- ќпредел€ем количество не купленных билетов на рейс
+	-- Determine the number of tickets not purchased
 	SET @TicketsNotPurchased = @TotalNumberCabins - @TicketsSold
-	-- ≈сли имеютс€ не купленные билеты на рейс, тогда реализуем их новым клиентам
+	-- If there are not purchased voyage tickets, then we will sell them to new customers
 	if @TicketsNotPurchased > 0
 	BEGIN
 	UPDATE dbo.E_6_Ticket set @TicketsNotPurchased = @TicketsNotPurchased
