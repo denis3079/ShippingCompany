@@ -1,11 +1,11 @@
 DECLARE 
  @DayVoyage INT
- -- ¬водим переменную продолжительность рейса
+ -- Enter a variable voyage duration
 SELECT @DayVoyage=DATEDIFF(day, E_4_Voyage.DepartureDate, E_4_Voyage.ArrivalDate)
 FROM dbo.E_4_Voyage
--- оредел€ем продолжительность рейса дл€ каждого карабл€ (суток)
+-- determine the duration of the voyage for each ship (days)
 SELECT Voyage_number, 
             DATEDIFF(day, DepartureDate, ArrivalDate) AS DayVoyage,
 			AVG(@DayVoyage) OVER (ORDER BY Voyage_number) AS AVG
 FROM dbo.E_4_Voyage 
--- при помощи оконной функции получаем среднюю продолжительность всех рейсов 
+-- using the window function we get the average duration of all voyage
