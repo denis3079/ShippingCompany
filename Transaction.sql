@@ -2,26 +2,26 @@ BEGIN TRANSACTION;
 UPDATE dbo.E_9_Type_cargo 
 SET TransportCost1Ton -= 500
 WHERE NameCargo = 'alcohol'
-IF (@@error <> 0) -- Отменить транзакцию, если есть ошибки 
+IF (@@error <> 0) -- Cancel transaction if there are errors
         ROLLBACK
-SELECT 'Транзакция' AS "Состояние", 
-          NameCargo AS "Наименование груза", 
-         TransportCost1Ton AS "Стоимость транспортировки 1 тонны",
-@@SPID AS "Процесс",
-@@TRANCOUNT AS "Количество транзакций" 
+SELECT 'РўСЂР°РЅР·Р°РєС†РёСЏ' AS "РЎРѕСЃС‚РѕСЏРЅРёРµ", 
+          NameCargo AS "РќР°РёРјРµРЅРѕРІР°РЅРёРµ РіСЂСѓР·Р°", 
+         TransportCost1Ton AS "РЎС‚РѕРёРјРѕСЃС‚СЊ С‚СЂР°РЅСЃРїРѕСЂС‚РёСЂРѕРІРєРё 1 С‚РѕРЅРЅС‹",
+@@SPID AS "РџСЂРѕС†РµСЃСЃ",
+@@TRANCOUNT AS "РљРѕР»РёС‡РµСЃС‚РІРѕ С‚СЂР°РЅР·Р°РєС†РёР№" 
 FROM dbo.E_9_Type_cargo WHERE NameCargo='alcohol';
 
 UPDATE dbo.E_9_Type_cargo
 SET TransportCost1Ton += 500
 WHERE NameCargo = 'acid';
-    IF (@@error <> 0) -- Отменить транзакцию, если есть ошибки 
+    IF (@@error <> 0) -- Cancel transaction if there are errors
         ROLLBACK
-COMMIT TRANSACTION; -- Завершение транзакции
-SELECT 'После транзакции' AS "Состояние", 
-         NameCargo AS "Наименование груза", 
-         TransportCost1Ton AS "Стоимость транспортировки 1 тонны",
-@@SPID AS "Процесс",
-@@TRANCOUNT AS "Количество транзакций"
+COMMIT TRANSACTION; -- Р—Р°РІРµСЂС€РµРЅРёРµ С‚СЂР°РЅР·Р°РєС†РёРё
+SELECT 'РџРѕСЃР»Рµ С‚СЂР°РЅР·Р°РєС†РёРё' AS "РЎРѕСЃС‚РѕСЏРЅРёРµ", 
+         NameCargo AS "РќР°РёРјРµРЅРѕРІР°РЅРёРµ РіСЂСѓР·Р°", 
+         TransportCost1Ton AS "РЎС‚РѕРёРјРѕСЃС‚СЊ С‚СЂР°РЅСЃРїРѕСЂС‚РёСЂРѕРІРєРё 1 С‚РѕРЅРЅС‹",
+@@SPID AS "РџСЂРѕС†РµСЃСЃ",
+@@TRANCOUNT AS "РљРѕР»РёС‡РµСЃС‚РІРѕ С‚СЂР°РЅР·Р°РєС†РёР№"
 FROM dbo.E_9_Type_cargo WHERE NameCargo = 'acid';
 
 
