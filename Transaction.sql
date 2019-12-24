@@ -2,7 +2,7 @@ BEGIN TRANSACTION;
 UPDATE dbo.E_9_Type_cargo 
 SET TransportCost1Ton -= 500
 WHERE NameCargo = 'alcohol'
-IF (@@error <> 0) -- Cancel transaction if there are errors
+IF (@@error <> 0) -- Отменить транзакцию, если есть ошибки 
         ROLLBACK
 SELECT 'Транзакция' AS "Состояние", 
           NameCargo AS "Наименование груза", 
@@ -14,7 +14,7 @@ FROM dbo.E_9_Type_cargo WHERE NameCargo='alcohol';
 UPDATE dbo.E_9_Type_cargo
 SET TransportCost1Ton += 500
 WHERE NameCargo = 'acid';
-    IF (@@error <> 0) -- Cancel transaction if there are errors
+    IF (@@error <> 0) -- Отменить транзакцию, если есть ошибки 
         ROLLBACK
 COMMIT TRANSACTION; -- Завершение транзакции
 SELECT 'После транзакции' AS "Состояние", 
