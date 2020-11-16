@@ -3,7 +3,7 @@ CREATE DATABASE ShippingCompany;
 CREATE TABLE E_1_Captain
 (
 	Captain_personal_number int NOT NULL , -- ПЕРСОНАЛЬНЫЙ НОМЕР КАПИТАНА
-	Voyage_number VARCHAR(15) REFERENCES E_4_Voyage (Voyage_number) ON DELETE CASCADE, -- ВНЕШНИЙ КЛЮЧ - НОМЕР РЕЙСА
+	Voyage_number VARCHAR(15) REFERENCES E_4_Voyage (Voyage_number) ON DELETE CASCADE, -- ВНЕШНИЙ КЛЮЧ / НОМЕР РЕЙСА
 	LastName varchar(100) NOT NULL , -- ФАМИЛИЯ
 	FirstName varchar(100) NOT NULL , -- ИМЯ
 	PatronimicName varchar(100) NULL , -- ОТЧЕСТВО
