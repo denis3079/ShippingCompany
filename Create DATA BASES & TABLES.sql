@@ -81,7 +81,7 @@ go
 CREATE TABLE E_6_Ticket
 (
 	Number_of_ticket varchar(50) NOT NULL ,
-    Voyage_number VARCHAR(15) REFERENCES E_4_Voyage (Voyage_number) ON DELETE CASCADE,
+        Voyage_number VARCHAR(15) REFERENCES E_4_Voyage (Voyage_number) ON DELETE CASCADE,
 	Customers_internal_account int REFERENCES E_5_Client (Customers_internal_account) ON DELETE CASCADE,
 	NameShip VARCHAR(35) REFERENCES E_2_Ship (NameShip) ON UPDATE NO ACTION,
 	Class VARCHAR(20) REFERENCES E_8_Cabin_class (Class) ON DELETE CASCADE,
